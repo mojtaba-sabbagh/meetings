@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@alireza-ab/persian-date": "^2.6.2",
+    "axios": "^1.2.2",
     "flowbite": "^1.5.4",
     "tw-elements": "^1.0.0-alpha12",
     "vue": "^3.2.41",

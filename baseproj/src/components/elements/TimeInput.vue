@@ -1,9 +1,6 @@
 <script>
    import VueTimepicker from 'vue3-timepicker/src/VueTimepicker.vue';
     export default {
-    components: {
-        VueTimepicker,
-    },
     props: {
         label_title: String,
         required: {
@@ -33,21 +30,19 @@
             type: Boolean,
             default: false,
         },
-        HH: '10',
-        mm: '00',
+        timeValue: {
+                HH: '20',
+                mm: ''
+            },
+    },
+    components: {
+        VueTimepicker,
     },
     data() {
        return {
             hasError: false,
             entered : false,
-            timeValue: {
-                HH: '20',
-                mm: ''
-            },
         }
-    },
-    computed: {
-
     },
     methods: {
          constraint() {
@@ -57,9 +52,6 @@
       },
     },
     created() {
-        this.timeValue.HH = this.HH;
-        this.timeValue.mm = this.mm;
-        console.log(this.timeValue);
     },
   }
 </script>

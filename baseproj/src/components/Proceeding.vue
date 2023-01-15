@@ -21,8 +21,7 @@
             proceedingId: 0,
             proceedingNo: 0,
             pDate:'',
-            HH: '10', 
-            mm: '00',
+            pTime:{'HH':'10', 'mm':'00'},
             loc:'',
             meetingName: '',
             manipulationMode: 0,
@@ -124,7 +123,7 @@
             else {
                 axios.put(serverUrl+'api/proceedings/'+this.proceedingId+'/',{'proceeding_no':this.proceedingNo, 
                             'loc':this.loc, 'readonly':this.preadonly, 'meeting':this.meetingId, 
-                            'pdate': this.toGregorianDate(this.pDate), 'ptime':`${this.HH}:${this.mm}`, 'participants':this.participants})
+                            'pdate': this.toGregorianDate(this.pDate), 'ptime':`${this.pTime.HH}:${this.pTime.mm}`, 'participants':this.participants})
                     .then(response => {
                         this.getProceedings(this.meetingId);
                         this.showAlertFunc('تغییرات ذخیره شد.');
@@ -148,8 +147,8 @@
             this.proceedingNo = proceedingData.proceeding_no;
             this.pDate = this.toPersianDate(proceedingData.pdate);
             let timeDetails = proceedingData.ptime.split(':');
-            this.HH = timeDetails[0];
-            this.mm = timeDetails[1];
+            this.pTime.HH = timeDetails[0];
+            this.pTime.mm = timeDetails[1];
             this.loc = proceedingData.loc;
             this.preadonly = proceedingData.readonly;
             this.participants = proceedingData.participants;
@@ -163,8 +162,8 @@
            this.pDate = newValue; 
           },
           updatePTime(newValue){
-           this.HH = newValue.HH;
-           this.mm = newValue.mm;
+           this.pTime.HH = newValue.HH;
+           this.pTime.mm = newValue.mm;
           },
           updateLoc(newValue){
             this.loc = newValue;
@@ -181,8 +180,7 @@
             this.proceedingNo = '';
             const today = new Date();
             this.pDate = this.toPersianDate(today.toDateString());
-            this.HH ='10'; 
-            this.mm = '00';
+            this.pTime = {'HH':'10', 'mm':'00'};
             this.buttonLabel = 'ایجاد صورتجلسه';
             this.loc = '';
             this.preadonly = false;
@@ -221,8 +219,8 @@
                 this.showAlert = false;
             }, delayInMilliseconds);
           },
-          toPersianDate(){
-                let p = new PersianDate(this.birthday, 'gregorian');
+          toPersianDate(gdate){
+                let p = new PersianDate(gdate, 'gregorian');
                 return p.calendar('jalali').toString('?YYYY/?MM/?DD');
             },
           toGregorianDate(newValue) { 
@@ -272,7 +270,7 @@
                                 @onChangeValue="updateNo" label_title="شماره صورتجلسه" input_placeholder="شماره صورتجلسه" />
                             <DateInput class="w-5/6 mx-4" label_title="تاریخ صورتجلسه"  v-model:value="pDate" 
                                  l2r @onChangeValue="updatePDate" :disabled="preadonly" />
-                            <TimeInput class="w-5/6 mx-4" label_title="ساعت صورتجلسه"  v-model:HH="HH" v-model:mm="mm" 
+                            <TimeInput class="w-5/6 mx-4" label_title="ساعت صورتجلسه"  v-model:timeValue="pTime" 
                                  l2r @onChangeValue="updatePTime" :disabled="preadonly" />
                             <InputText  class="w-5/6 mx-4" v-model:value="loc" :disabled="preadonly"
                                 @onChangeValue="updateLoc" label_title="مکان جلسه" input_placeholder="سال هنری" />
