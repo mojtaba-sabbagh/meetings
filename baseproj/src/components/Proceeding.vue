@@ -8,6 +8,7 @@
     import { serverUrl } from '../../settings';
     import PersianDate from '@alireza-ab/persian-date';
     import Confirm from './elements/Confirm.vue';
+    import FileUpload from './elements/FileUpload.vue';
 
     export default {
         data() {
@@ -40,6 +41,7 @@
             Toggle,
             Confirm,
             TimeInput,
+            FileUpload,
         },
         methods: {
             resetMessages(){
@@ -301,6 +303,7 @@
                                 </div>
                             </div>
                         </div>
+                        <FileUpload :maxSize="10" accept="*" />
                         <button type="submit" @click="addProceedingAPI" class="hover:bg-red-100 mt-14 w-1/2 appearance-none border text-sm text-center rounded-lg p-2.5
                             bg-red-50 border-gray-500 text-gray-900 placeholder-gray-200 focus:ring-gray-500 
                             focus:border-gray-500 dark:bg-gray-100 dark:border-gray-400 disabled:bg-slate-50 disabled:text-slate-300" :disabled="isDisabled"> 
