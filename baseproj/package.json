@@ -1,0 +1,30 @@
+{
+  "name": "baseproj",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@alireza-ab/persian-date": "^2.6.2",
+    "flowbite": "^1.5.4",
+    "tw-elements": "^1.0.0-alpha12",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6",
+    "vue3-cookies": "^1.0.6",
+    "vue3-persian-datetime-picker": "^1.2.2",
+    "vue3-timepicker": "^1.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.2.0",
+    "@vue/cli-plugin-router": "~4.5.15",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.2.1",
+    "tailwindcss-rtl": "^0.9.0",
+    "vite": "^3.2.0"
+  }
+}

@@ -1,0 +1,6 @@
+pip install django-jalali-date
+pip install reportlab
+
+pip install arabic_reshaper
+pip install python-bidi
+pip3 install django-braces
