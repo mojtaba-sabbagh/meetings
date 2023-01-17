@@ -44,7 +44,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 #making sure CORS_ALLOW_HEADERS  is not "*"
 from corsheaders.defaults import default_headers
-CORS_ALLOW_HEADERS = list(default_headers) + ['Set-Cookie', 'x-xsrf-token']
+CORS_ALLOW_HEADERS = list(default_headers) + ['Set-Cookie', 'x-xsrf-token', 'Content-Type', 'Content-Disposition']
 #CORS_ALLOW_HEADERS = ["*"]
 
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:5173','http://localhost:5173']

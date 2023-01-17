@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -10,14 +9,22 @@ from rest_framework.response import Response
 from django.contrib.auth import login, logout
 from .serializers import *
 from django.http import JsonResponse
+from rest_framework.parsers import FileUploadParser
 # To bypass having a CSRF token
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, parser_classes, permission_classes
 from rest_framework.pagination import PageNumberPagination
 import datetime
 from django.utils.dateparse import parse_date
+# Import mimetypes module
+import mimetypes
+# Import HttpResponse module
+from django.http.response import HttpResponse
+
 
 import io
+import os
+from django.conf import settings
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 import arabic_reshaper
@@ -376,3 +383,36 @@ class StockholderDetail(APIView):
         stockholder = self.get_object()
         serializer = stockholderSerializer(stockholder)
         return Response(serializer.data)
+
+class FileUploadView(APIView):
+    parser_classes = (FileUploadParser, )
+
+    def post(self, request, meeting):
+        up_file = request.FILES['file']
+        print(up_file)
+        try:
+            os.mkdir(f'{settings.BASE_DIR}/meeting/assets/{meeting}/')
+        except:
+            pass
+        destination = open(f'{settings.BASE_DIR}/meeting/assets/{meeting}/{up_file.name}', 'wb+')
+        #destination = open(f'{settings.BASE_DIR}/meeting/assets/{up_file.name}', 'wb+')
+        for chunk in up_file.chunks():
+            destination.write(chunk)
+        destination.close()  # File should be closed only after all chuns are added
+
+        return Response(up_file.name, status.HTTP_201_CREATED)
+
+
+def download_file(request, foldername, filename):
+    # Define the full file path
+    filepath = f"{settings.BASE_DIR}/meeting/assets/{foldername}/{filename}"
+    # Open the file for reading content
+    path = open(filepath, 'rb')
+    # Set the mime type
+    mime_type, _ = mimetypes.guess_type(filepath)
+    # Set the return value of the HttpResponse
+    response = HttpResponse(path, content_type=mime_type)
+    # Set the HTTP header for sending to browser
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    # Return the response value
+    return response

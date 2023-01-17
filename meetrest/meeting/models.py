@@ -102,7 +102,7 @@ class Proceeding(models.Model):
     participants =  models.ManyToManyField(Employee)
     meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE)
     readonly = models.BooleanField(default=False)
-    upload = models.FileField(upload_to ='proceedings/', blank=True, null=True)
+    upload = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return f"{self.meeting} - {self.proceeding_no} - {date2jalali(self.pdate).strftime('%Y/%m/%d')}"

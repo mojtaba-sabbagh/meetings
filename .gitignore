@@ -16,7 +16,7 @@ node_modules
 *.pyc
 *~
 *.swp
-
+meetrest/meeting/assets/*
 logs
 *.log
 npm-debug.log*

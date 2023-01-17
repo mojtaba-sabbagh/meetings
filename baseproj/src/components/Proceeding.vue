@@ -25,6 +25,7 @@
             pTime:{'HH':'10', 'mm':'00'},
             loc:'',
             meetingName: '',
+            proceedingName: '',
             manipulationMode: 0,
             showForm: false,
             showAlert: false,
@@ -32,6 +33,10 @@
             buttonLabel: 'تایید',
             preadonly: false,
             errorMessage: '',
+
+            fileName: '',
+            fileUploaded: false,
+            proceedingLink: '',
           }
         },
         components: {
@@ -92,8 +97,18 @@
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
                 });
           },
+          findOptionsText(optionsNames, optionId){
+            var name = '';
+            optionsNames.forEach(element => {
+                if (element.ID == optionId){
+                    name = element.text;
+                }
+            });
+            return name;
+          },
           getProceedings(meetingId){
-             axios({
+            this.meetingName = this.findOptionsText(this.meetingNamesOptions, meetingId);
+            axios({
                     method: 'get',
                     url: serverUrl+'api/proceedings/?meetingid='+meetingId,
                     headers: {"Content-Type": "application/json"},
@@ -112,7 +127,7 @@
             if (this.manipulationMode == 0){
                 axios.post(serverUrl+'api/proceedings/', {'proceeding_no':this.proceedingNo, 'pdate':this.toGregorianDate(this.pDate),
                             'ptime':`${this.pTime.HH}:${this.pTime.mm}`, 'loc':this.loc, 'readonly':this.preadonly, 'meeting':this.meetingId, 
-                            'participants':this.participants})
+                            'participants':this.participants, 'upload':this.fileName})
                     .then(response => {
                         this.blankForm();
                         this.getProceedings(this.meetingId);
@@ -125,7 +140,8 @@
             else {
                 axios.put(serverUrl+'api/proceedings/'+this.proceedingId+'/',{'proceeding_no':this.proceedingNo, 
                             'loc':this.loc, 'readonly':this.preadonly, 'meeting':this.meetingId, 
-                            'pdate': this.toGregorianDate(this.pDate), 'ptime':`${this.pTime.HH}:${this.pTime.mm}`, 'participants':this.participants})
+                            'pdate': this.toGregorianDate(this.pDate), 'ptime':`${this.pTime.HH}:${this.pTime.mm}`, 
+                            'participants':this.participants, 'upload':this.fileName})
                     .then(response => {
                         this.getProceedings(this.meetingId);
                         this.showAlertFunc('تغییرات ذخیره شد.');
@@ -136,6 +152,7 @@
             }
           },
           getProceeding(newValue){
+            this.proceedingName = this.findOptionsText(this.proceedingNameOptions, newValue);
             if (newValue && newValue != 0){
                 this.getProceedingAPI(newValue);
             }
@@ -155,6 +172,10 @@
             this.preadonly = proceedingData.readonly;
             this.participants = proceedingData.participants;
             this.proceedingId = proceedingData.id;
+            if (proceedingData.upload != ''){
+                this.fileUploaded = true;
+                this.proceedingLink = this.createLink(proceedingData.upload);
+            }
             this.resetMessages();
           },
           updateNo(newValue){
@@ -189,6 +210,8 @@
             this.showForm = true;
             this.manipulationMode = 0;
             this.proceedingId = 0;
+            this.fileUploaded = false;
+            this.proceedingLink = '';
             this.resetMessages();
           },
           deleteMeeting(){
@@ -229,6 +252,60 @@
                 let p = new PersianDate(newValue, 'jalali');
                 return p.calendar('gregorian').toString('?YYYY-?MM-?DD');
             },
+        createLink(fileName){
+            return `${serverUrl}api/downloadproc/${fileName}/`;
+        },
+        onFileChange(e) {
+            const file = e.target.files[0]
+            let fileExtention = file.name.split(".").pop();
+            let filename = this.proceedingName.replaceAll(' ', '').replaceAll('/', '-').replaceAll('\\', '-')+`.${fileExtention}`;
+            let foldername = this.meetingName.replaceAll(' ', '-');
+            const formData = new FormData();
+            formData.append("file", e.target.files[0]);
+            this.fileName = `${foldername}/${filename}`;
+            axios
+                .post(serverUrl+`api/procupload/${foldername}/`, formData,
+                {
+                    headers: {
+                    'Content-Type': "image/jpeg;charset=UTF-8",
+                    'Content-Disposition': `file; filename=${filename}`
+                    }
+                })
+                .then(() => {
+                 this.fileUploaded = true;
+                 this.proceedingLink = this.createLink(this.fileName);
+                })
+                .catch(() => {
+                console.log("FAILED");
+                this.fileUploaded = false;
+                });
+        },
+        downloadProceeding(link){
+            let filename = 'file';
+            if (this.fileName != ''){
+                filename = this.fileName;
+            }
+            axios({
+                    url: link, //your url
+                    method: 'GET',
+                    responseType: 'blob', // important
+                })
+                .then((response) => {
+                    // create file link in browser's memory
+                    const href = URL.createObjectURL(response.data);
+
+                    // create "a" HTML element with href to file & click
+                    const link = document.createElement('a');
+                    link.href = href;
+                    link.setAttribute('download', filename); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+
+                    // clean up "a" element & remove ObjectURL
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(href);
+                });
+        }
         },
         created(){
           axios.defaults.withCredentials = true;
@@ -303,8 +380,20 @@
                                 </div>
                             </div>
                         </div>
-                        <FileUpload :maxSize="10" accept="*" />
-                        <button type="submit" @click="addProceedingAPI" class="hover:bg-red-100 mt-14 w-1/2 appearance-none border text-sm text-center rounded-lg p-2.5
+                        
+                        <div class="mt-5 flex flex-col md:flex-row items-center md:justify-center">
+                            <label class="ml-5 w-4/5 md:w-1/4 mr-4 border bg-white px-5 py-2.5 text-green-700 dark:text-green-500 hover:bg-red-100
+                            border text-sm rounded-lg bg-white-50 border-gray-500 focus:ring-gray-500 focus:border-gray-500 disabled:bg-slate-50 disabled:text-slate-300" 
+                                    for="myfile">انتخاب فایل صورتجلسه
+                                <input type="file" class=" hidden" id="myfile" name="myfile" @change="onFileChange" :disabled="preadonly" /> 
+                            </label>
+                            <button v-if="fileUploaded" class="inline-block mt-6 md:mt-0 disabled:bg-slate-50 disabled:text-slate-300" 
+                                @click="downloadProceeding(proceedingLink)" :disabled="preadonly" > 
+                                دانلود فایل صورتجلسه 
+                            </button>
+                        </div>
+                        
+                        <button type="submit" @click="addProceedingAPI" class="hover:bg-red-100 mt-7 md:mt-14 w-4/5 md:w-1/2 appearance-none border text-sm text-center rounded-lg p-2.5
                             bg-red-50 border-gray-500 text-gray-900 placeholder-gray-200 focus:ring-gray-500 
                             focus:border-gray-500 dark:bg-gray-100 dark:border-gray-400 disabled:bg-slate-50 disabled:text-slate-300" :disabled="isDisabled"> 
                             <span> {{ buttonLabel }} </span>
@@ -312,7 +401,7 @@
                     </form>
                     <p class="text-red-500 mt-2"> {{ errorMessage }} </p>
                 </div>
-                <button v-if="!preadonly" type="button" class="hover:bg-red-100 mt-14 w-1/3 appearance-none border text-sm text-center rounded-lg p-2.5
+                <button v-if="!preadonly" type="button" class="hover:bg-red-100 mt-14 w-4/5 md:w-1/2 appearance-none border text-sm text-center rounded-lg p-2.5
                             bg-red-200 border-gray-500 text-gray-900 placeholder-gray-200 focus:ring-gray-500 
                             focus:border-gray-500 dark:bg-gray-100 dark:border-gray-400 disabled:bg-slate-50 disabled:text-slate-300" 
                                 data-bs-toggle="modal" data-bs-target="#exampleModal" :disabled="isDisabled">
