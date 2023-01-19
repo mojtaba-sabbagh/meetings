@@ -54,7 +54,7 @@ proceeding_title_style = ParagraphStyle(
 def proceeding_title(proc):
     meeting = Meeting.objects.get(pk=proc.meeting.id)
     title = f"<b>صورتجلسه شماره {proc.proceeding_no} {meeting.meeting_name} به تاریخ {date2jalali(proc.pdate).strftime('%Y/%m/%d')}</b>"
-    under_title = "این جلسه با حضور شرکت کنندگان زیر برگزار شد و مفاد ذیل به تصویب رسید."
+    under_title = f"این جلسه با حضور شرکت کنندگان زیر در ساعت {proc.ptime.strftime('%H:%M')} برگزار شد و مفاد ذیل به تصویب رسید."
     return title, under_title
 
 def proceeding_participants(proc):

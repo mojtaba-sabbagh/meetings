@@ -76,6 +76,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           employeesName(meetingId){
@@ -89,6 +90,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           getProceedingAPI(proceedingId){
@@ -103,6 +105,7 @@
                 })
             .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           getProceedings(){
@@ -118,6 +121,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
             };
           },
@@ -132,6 +136,7 @@
             })
             .catch(error => {
                 this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
             });
           },
          updateShType(newValue){
@@ -199,6 +204,7 @@
                 .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
                     this.searchStart = false;
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
               });
             },
           getNext(){

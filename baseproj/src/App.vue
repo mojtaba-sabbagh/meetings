@@ -15,6 +15,7 @@
           last_name: 'کاربر',
           email: '',
           username: '',
+          is_staff: false,
         };
   export default {
     data() {
@@ -126,21 +127,21 @@
             <div class="border-b-4 py-5"> ابزارها </div> 
         </a>
 
-        <a v-if="loggedIn" class="block mt-5  py-2  hover:bg-red-100" @click="activeSec=1">
+        <a v-if="loggedIn && user.is_staff" class="block mt-5  py-2  hover:bg-red-100" @click="activeSec=1">
           <div class="grid justify-items-center">
              <img class="w-12" src="images/network.png"/> 
             <span class="text-sm"> مدیریت جلسات </span>
           </div>
         </a>
        
-        <a v-if="loggedIn" class="block mt-5 py-2  hover:bg-red-100" href="#" @click="activeSec=2">
+        <a v-if="loggedIn && user.is_staff" class="block mt-5 py-2  hover:bg-red-100" href="#" @click="activeSec=2">
           <div class="grid justify-items-center">
              <img class="w-12" src="images/document.png"/> 
             <span class="text-sm"> مدیریت صورتجلسه </span>
           </div>
         </a>
 
-        <a v-if="loggedIn" class="block mt-5 py-2  hover:bg-red-100" href="#" @click="activeSec=3">
+        <a v-if="loggedIn && user.is_staff" class="block mt-5 py-2  hover:bg-red-100" href="#" @click="activeSec=3">
           <div class="grid justify-items-center">
              <img class="w-12" src="images/justice.png"/> 
             <span class="text-sm"> مدیریت مصوبات </span>

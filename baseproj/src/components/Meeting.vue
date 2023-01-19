@@ -60,6 +60,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           employeesName(){
@@ -75,6 +76,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           getMeetingAPI(meetingId){
@@ -88,6 +90,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           addMeetingAPI(){
@@ -96,18 +99,22 @@
                     .then(response => {
                         this.blankForm();
                         this.meetingsName();
+                        this.$toast.success('جلسه با موفقیت ذخیره گردید.');
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در ذخیره اطلاعات رخ داد.');
                     });
             }
             else {
                 axios.put(serverUrl+'api/meetings/'+this.meetingId+'/', {'meeting_name':this.meetingName, 'period':this.meetingPeriod})
                     .then(response => {
                         this.meetingsName();
+                        this.$toast.success('جلسه با موفقیت ذخیره گردید.');
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در ذخیره اطلاعات رخ داد.');
                     });   
             }
           },
@@ -155,9 +162,11 @@
             .then(response => {
                     this.meetingsName();
                     this.blankForm();
+                    this.$toast.success('جلسه حذف گردید.');
                 })
             .catch(error => {
-                    this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در برقرار ارتباط با سامانه رخ داد.');
                 });
           },
           addMember(){
@@ -170,9 +179,11 @@
                 axios.delete(serverUrl+'api/members/'+memId+'/')
                 .then(response => {
                     this.members.splice(row, 1);
+                    this.$toast.success('عضو حذف گردید.');
                     })
                 .catch(error => {
-                    this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در برقرار ارتباط با سامانه رخ داد.');
                     });
                 }
           },
@@ -190,20 +201,23 @@
                 axios.put(serverUrl+'api/members/'+memId+'/', {'employee':this.members[row].employee_id, 
                                                         'role':this.members[row].role, 'meeting':this.meetingId})
                 .then(response => {
-                    this.showAlertFunc('تغییرات ذخیره شد.');
+                    this.$toast.success('تغییرات ذخیره شد.');
                     })
                 .catch(error => {
-                    this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در برقرار ارتباط با سامانه رخ داد.');
+                    console.log(memId, row);
                     });
                 }
             else {
                 axios.post(serverUrl+'api/members/', {'employee':this.members[row].employee_id, 
                                                         'role':this.members[row].role, 'meeting':this.meetingId})
                     .then(response => {
-                        this.showAlertFunc('تغییرات ذخیره شد.');
+                        this.$toast.success('تغییرات ذخیره شد.');
                     })
                     .catch(error => {
-                        this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در برقرار ارتباط با سامانه رخ داد.');
                     });
             }
           },

@@ -6,6 +6,11 @@ import 'tw-elements';
 import App from './App.vue';
 import VueCookies from 'vue3-cookies'
 
+//import Toast, { POSITION } from "vue-toastification";
+import Toaster from '@meforma/vue-toaster';
+// Import the CSS or use your own!
+import "vue-toastification/dist/index.css";
+
 const routes = [
     { path: '/', component: App },
   ]
@@ -19,6 +24,12 @@ const routes = [
     routes, // short for `routes: routes`
   })
 
+  /* const options = {
+    // You can set your default options here
+    position: POSITION.BOTTOM_RIGHT,
+    timeout: 2000,
+}; */
+
 createApp(App)
 .use(router)
 .use(VueCookies, {
@@ -28,4 +39,5 @@ createApp(App)
     secure: false,
     sameSite: "None"
 })
-.mount('#app')
+.use(Toaster)
+.mount('#app');

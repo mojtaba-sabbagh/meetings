@@ -73,6 +73,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
             },
             employeesName(meetingId){
@@ -86,6 +87,7 @@
                     })
                     .catch(error => {
                             this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                            this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                     });
             },
             getProceedingAPI(proceedingId){
@@ -100,6 +102,7 @@
                     })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                     });
             },
             getProceedings(meetingId){
@@ -116,6 +119,7 @@
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                     });
                 };
                 this.meetingId = meetingId;
@@ -151,6 +155,7 @@
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                     });
                 };
             },
@@ -165,6 +170,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
             },
             async addResolutionAPI(event){
@@ -172,19 +178,22 @@
                 if (!this.resolutions[row].id){
                     axios.post(serverUrl+'api/resolutions/', {...this.resolutions[row]})
                         .then(response => {
-                            this.showAlertFunc('تغییرات ذخیره شد.');
+                            this.$toast.success('تغییرات ذخیره شد.');
+                            this.resolutions[row].id = response.data.id;
                         })
                         .catch(error => {
                             this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                            this.$toast.error('خطایی در ذخیره تغییرات اتفاق افتاد.');
                         });
                 }
                 else {
                     axios.put(serverUrl+'api/resolutions/'+this.resolutions[row].id+'/',{...this.resolutions[row]})
                         .then(response => {
-                            this.showAlertFunc('تغییرات ذخیره شد.');
+                            this.$toast.success('تغییرات ذخیره شد.');
                         })
                         .catch(error => {
                             this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                            this.$toast.error('خطایی در ذخیره تغییرات اتفاق افتاد.');
                         });   
                 }
             },
@@ -202,7 +211,8 @@
                     this.resolutions[row].gender = sh.data.gender;
                 } catch (error) {
                     //this.errorMessage = 'کارمند/دانشجوی مورد نظر پیدا نشد، نامشخص درنظر گرفته می‌شود.';
-                    this.showAlertFunc('کارمند/دانشجوی مورد نظر پیدا نشد، نامشخص درنظر گرفته می‌شود.');
+                    //this.showAlertFunc('کارمند/دانشجوی مورد نظر پیدا نشد، نامشخص درنظر گرفته می‌شود.');
+                    this.$toast.error('کارمند/دانشجوی مورد نظر پیدا نشد، نامشخص درنظر گرفته می‌شود.');
                     this.resolutions[row].stockholder = 1;
                 }
             },
@@ -214,8 +224,8 @@
                     this.showForm = true;
                 }
                 else {
-                this.proceedingId = 0;
-                this.showForm = false;
+                    this.proceedingId = 0;
+                    this.showForm = false;
                 }
             },
             downloadFile() {
@@ -240,6 +250,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error; //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
             },
             updateNo(newValue, row){
@@ -302,6 +313,7 @@
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در حدف مصوبه رخ داد.');
                     });
                 }
                 else {

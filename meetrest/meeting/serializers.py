@@ -166,7 +166,10 @@ class stockholderSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
     def get_username(self, obj):
         return obj.user.username
-        
+    is_staff = serializers.SerializerMethodField()
+    def get_is_staff(self, obj):
+        return obj.user.is_staff
+
     class Meta:
         model = Stockholder
         fields = [
@@ -174,6 +177,7 @@ class stockholderSerializer(serializers.ModelSerializer):
             'email',
             'first_name',
             'last_name',
+            'is_staff',
         ]
 """
 class DepNameSerializer(serializers.ModelSerializer):

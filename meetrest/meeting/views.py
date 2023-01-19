@@ -24,6 +24,7 @@ from django.http.response import HttpResponse
 
 import io
 import os
+from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
@@ -374,7 +375,6 @@ class StockholderDetail(APIView):
 
     def get_object(self):
         pk = self.request.user.id
-        print(pk)
         try:
             return Stockholder.objects.get(user=pk)
         except Stockholder.DoesNotExist:
@@ -388,18 +388,19 @@ class FileUploadView(APIView):
     parser_classes = (FileUploadParser, )
 
     def post(self, request, meeting):
+
         up_file = request.FILES['file']
-        print(up_file)
         try:
             os.mkdir(f'{settings.BASE_DIR}/meeting/assets/{meeting}/')
         except:
             pass
-        destination = open(f'{settings.BASE_DIR}/meeting/assets/{meeting}/{up_file.name}', 'wb+')
-        #destination = open(f'{settings.BASE_DIR}/meeting/assets/{up_file.name}', 'wb+')
-        for chunk in up_file.chunks():
-            destination.write(chunk)
-        destination.close()  # File should be closed only after all chuns are added
-
+        #destination = open(f'{settings.BASE_DIR}/meeting/assets/{meeting}/{up_file.name}', 'wb+')
+        destination = FileSystemStorage(location=f'{settings.BASE_DIR}/meeting/assets/{meeting}')
+        filename = destination.save(up_file.name, up_file)
+        #for chunk in up_file.chunks():
+        #    destination.write(chunk)
+        #destination.close()  # File should be closed only after all chuns are added
+        #image = fs.url(filename)
         return Response(up_file.name, status.HTTP_201_CREATED)
 
 

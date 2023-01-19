@@ -65,6 +65,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           employeesName(meetingId){
@@ -78,6 +79,7 @@
                 })
                 .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           getProceedingAPI(proceedingId){
@@ -95,6 +97,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           findOptionsText(optionsNames, optionId){
@@ -121,6 +124,7 @@
                 })
                 .catch(error => {
                     this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                    this.$toast.error('خطا در واکشی اطلاعات از سامانه رخ داد.');
                 });
           },
           addProceedingAPI(){
@@ -131,10 +135,11 @@
                     .then(response => {
                         this.blankForm();
                         this.getProceedings(this.meetingId);
-                        this.showAlertFunc('تغییرات ذخیره شد.');
+                        this.$toast.success('تغییرات ذخیره شد.');
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطایی در ذخیره تغییرات اتفاق افتاد.');
                     });
             }
             else {
@@ -144,10 +149,11 @@
                             'participants':this.participants, 'upload':this.fileName})
                     .then(response => {
                         this.getProceedings(this.meetingId);
-                        this.showAlertFunc('تغییرات ذخیره شد.');
+                        this.$toast.success('تغییرات ذخیره شد.');
                     })
                     .catch(error => {
                         this.errorMessage = error //'خطایی در گرفتن اطلاعات کاربر رخ داد'; //error.data
+                        this.$toast.error('خطایی در ذخیره تغییرات اتفاق افتاد.');
                     });   
             }
           },
@@ -274,10 +280,11 @@
                 .then(() => {
                  this.fileUploaded = true;
                  this.proceedingLink = this.createLink(this.fileName);
+                 this.$toast.success('فایل صورتجلسه با موفقیت بارگذاری شد.');
                 })
                 .catch(() => {
-                console.log("FAILED");
-                this.fileUploaded = false;
+                    this.$toast.error('خطایی در بارگذاری فایل صورتجلسه اتفاق افتاد.');
+                    this.fileUploaded = false;
                 });
         },
         downloadProceeding(link){
@@ -387,7 +394,8 @@
                                     for="myfile">انتخاب فایل صورتجلسه
                                 <input type="file" class=" hidden" id="myfile" name="myfile" @change="onFileChange" :disabled="preadonly" /> 
                             </label>
-                            <button v-if="fileUploaded" class="inline-block mt-6 md:mt-0 disabled:bg-slate-50 disabled:text-slate-300" 
+                            <button v-if="fileUploaded" class="inline-block mt-6 md:mt-0 hover:bg-red-100 px-5 py-2.5
+                                disabled:bg-slate-50 disabled:text-slate-300 hover:border text-sm rounded-lg" 
                                 @click="downloadProceeding(proceedingLink)" :disabled="preadonly" > 
                                 دانلود فایل صورتجلسه 
                             </button>
@@ -410,11 +418,11 @@
                 <Confirm id="exampleModal" message="درصورت تایید دیگر مشخصات صورتجلسه و مصوبات آن قابل تغییر نخواهد بود، مطمئن هستید؟" 
                                      title="قفل کردن جلسه" @onButtonClick="updateReadonly"/>
 
-                <div class="flex justify-center">
+                <!-- <div class="flex justify-center">
                     <div  class="flex items-center justify-center md:w-1/4 my-5 text-black font-farsi text-sm font-bold px-4 py-3" role="alert">
                         <p v-if="showAlert" class=""> {{ message }} </p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
