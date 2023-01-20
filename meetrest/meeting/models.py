@@ -62,6 +62,7 @@ class Meeting(models.Model):
     meeting_name = models.CharField(max_length=255)
     period = models.CharField(max_length=255, blank=True, null=True, choices=PERIOD_CHOICE)
     members = models.ManyToManyField(Employee, through='Membership')
+    creator = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     def is_member(self, user):
         # check if 'user' is member of the meeting.
@@ -76,9 +77,18 @@ class Meeting(models.Model):
         all_meetings = Meeting.objects.all()
         for meeting in all_meetings:
             if meeting.is_member(user):
-                meetings.append(meeting)
-        return meetings
+                meetings.append(meeting.id)
+        return Meeting.objects.filter(id__in=meetings)
     
+    @staticmethod
+    def meetings_user_created(user):
+        return Meeting.objects.filter(creator=user)
+    
+    @staticmethod
+    def meetings_user_belongs_to_or_created(user):
+        q1 = Meeting.meetings_user_created(user)
+        return q1.union(Meeting.meetings_user_belongs_to(user))
+
     def __str__(self):
         return self.meeting_name
 

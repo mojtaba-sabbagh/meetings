@@ -68,7 +68,7 @@
             meetingsName(){
              axios({
                     method: 'get',
-                    url: serverUrl+'api/meetings/',
+                    url: serverUrl+'api/meetings/?withmem=1',
                     headers: {"Content-Type": "application/json"},
                     })
                 .then(response => {

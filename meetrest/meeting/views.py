@@ -38,8 +38,14 @@ Karkonan = 'کارکنان'
 class MeetingList(APIView):
 
     def get(self, request, format=None):
-        if request.user.is_staff:
+        if request.user.is_superuser:
             qset = Meeting.objects.all()
+        elif request.user.is_staff:
+            withmem = request.GET.get('withmem', '0')
+            if withmem == '1':
+                qset =  Meeting.meetings_user_belongs_to_or_created(request.user.id)
+            else:
+                qset =  Meeting.meetings_user_created(request.user.id)
         else:
             qset =  Meeting.meetings_user_belongs_to(request.user.id)
         serial_qset = MeetingNameSerializer(qset, many=True)
@@ -271,7 +277,7 @@ class SearchRes(APIView):
             if meetingid and meetingid != '0':
                     qset = Resolution.objects.filter(proceeding__meeting=meetingid)
                     return qset.filter(proceeding__pdate__gte=from_date, proceeding__pdate__lte=to_date)
-            meetings =  Meeting.meetings_user_belongs_to(request.user.id)
+            meetings =  Meeting.meetings_user_belongs_to_or_created(request.user.id)
             qset = Resolution.objects.filter(proceeding__meeting__in=meetings)
             return qset.filter(proceeding__pdate__gte=from_date, proceeding__pdate__lte=to_date)
 
