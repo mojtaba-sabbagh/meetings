@@ -366,10 +366,6 @@
                         </div>
                         <div class="flex items-center mt-4">
                             <span class="block-inline float-right text-green-800 text-sm hover:text-blue-500 p-2">شرکت کنندگان: </span>
-                            <button class="block-inline flex items-end justify-right" title="افزودن شرکت کننده" 
-                                    @click="addParticipant" :disabled="preadonly">
-                                <img class="opacity-60 hover:bg-red-100 w-8 p-1" src="images/plus.png"/>
-                            </button>
                             <button v-if="!proceedingId" class="block-inline flex items-end justify-right" 
                                     title="افزودن همه اعضا" @click="addParticipants" :disabled="preadonly">
                                 <img class="opacity-60 hover:bg-red-100 w-8 p-1" src="images/addall.png"/>
@@ -386,6 +382,12 @@
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="flex flex-col items-center mt-5">
+                            <button class="block-inline flex items-end justify-right" title="افزودن شرکت کننده" 
+                                    @click="addParticipant" :disabled="preadonly">
+                                <img class="opacity-60 hover:bg-red-100 w-8 p-1" src="images/plus.png"/>
+                            </button>
                         </div>
                         
                         <div class="mt-5 flex flex-col md:flex-row items-center md:justify-center">

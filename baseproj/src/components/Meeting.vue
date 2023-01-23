@@ -284,9 +284,6 @@
                 <div class="mt-10">
                     <div class="flex items-center">
                         <span class="block-inline float-right text-green-800 text-lg hover:text-blue-500 p-2">اعضاء جلسه: </span>
-                        <button class="block-inline flex items-end justify-right" title="افزودن عضو" @click="addMember">
-                            <img class="opacity-60 hover:bg-red-100 w-8 p-1" src="images/plus.png"/>
-                        </button>
                         <button class="block-inline flex justify-center hover:bg-red-100 hover:border hover:border-1 p-1"
                                 title="ذخیره همه اعضا" @click="saveAllMembers">
                             <img class="w-7 opacity-60" src="images/ok.png"/>
@@ -309,6 +306,11 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
+                    <div class="flex flex-col items-center mt-5">
+                        <button class="block-inline flex items-end justify-right" title="افزودن عضو" @click="addMember">
+                            <img class="opacity-60 hover:bg-red-100 w-8 p-1" src="images/plus.png"/>
+                        </button>
                     </div>
                 </div>
                 <div class="flex justify-center">
