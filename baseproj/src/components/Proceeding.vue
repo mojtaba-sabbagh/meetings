@@ -374,7 +374,7 @@
                         <div class="flex flex-col items-center pb-5 mx-5 border border-gray-500">
                             <div class="w-full md:flex md:gap-6 justify-center mt-2 px-2" v-for="(member, i) in participants">
                                 <DropDown class="w-full md:w-2/5 md:float-right" label_title="نام شرکت کننده"  v-model:itemSelected="participants[i]" 
-                                        :options="employeeOptions" @onChangeValue="updateParticipant" :row="i" :disabled="preadonly" />
+                                        :options="employeeOptions" @onChangeValue="updateParticipant" :row="i" :disabled="preadonly" showLabel="false"/>
                                 <div class="flex flex-row items-end justify-center w-full md:w-1/4">  
                                     <button class="block-inline flex justify-center hover:bg-red-100 p-1" title="حذف شرکت کننده" 
                                         :row="i" :name="participants[i]" @click="deleteParticipant" :disabled="preadonly">

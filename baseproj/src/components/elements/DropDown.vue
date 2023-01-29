@@ -37,6 +37,10 @@
                 type: Boolean,
                 default: false,
             },
+            showLabel: {
+                type: Boolean,
+                default: true,
+            },
             row: 0,
         },
     methods: {
@@ -62,7 +66,7 @@
 
 <template>
     <div class="float-right flex flex-col">
-        <label for="input-success"
+        <label v-if="showLabel" for="input-success"
            class="font-farsi mb-2 text-sm"
            v-bind:class="{ 'text-green-700 dark:text-green-500': !hasError,
                        'text-red-700 dark:text-red-500' : hasError,

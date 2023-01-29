@@ -278,6 +278,7 @@ class SearchRes(APIView):
                     qset = Resolution.objects.filter(proceeding__meeting=meetingid)
                     return qset.filter(proceeding__pdate__gte=from_date, proceeding__pdate__lte=to_date)
             meetings =  Meeting.meetings_user_belongs_to_or_created(request.user.id)
+            meetings = [meeting.id for meeting in meetings]
             qset = Resolution.objects.filter(proceeding__meeting__in=meetings)
             return qset.filter(proceeding__pdate__gte=from_date, proceeding__pdate__lte=to_date)
 

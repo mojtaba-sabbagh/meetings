@@ -1,0 +1,802 @@
+[
+{
+    "model": "meeting.stockholder",
+    "pk": 1,
+    "fields": {
+        "user": 6,
+        "first_name": "ذینفع",
+        "last_name": "نامشخص",
+        "gender": "M",
+        "birthday": "2022-11-04",
+        "national_id": "0",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 2,
+    "fields": {
+        "user": 3,
+        "first_name": "محمد",
+        "last_name": "ثابت",
+        "gender": "M",
+        "birthday": "2022-11-04",
+        "national_id": "3051213277",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 3,
+    "fields": {
+        "user": 4,
+        "first_name": "مجتبی",
+        "last_name": "صباغ جعفری",
+        "gender": "M",
+        "birthday": "2022-11-07",
+        "national_id": "3051213276",
+        "email": "mojtaba.sabbagh@vru.ac.ir",
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 4,
+    "fields": {
+        "user": 5,
+        "first_name": "علی",
+        "last_name": "بادپروا",
+        "gender": "M",
+        "birthday": "2022-11-21",
+        "national_id": null,
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "first_name": "حبیبه",
+        "last_name": "مسلمی",
+        "gender": "F",
+        "birthday": "2022-11-21",
+        "national_id": "299348733",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 6,
+    "fields": {
+        "user": 7,
+        "first_name": "عرفان",
+        "last_name": "رجب‌زاده",
+        "gender": "M",
+        "birthday": "2022-11-24",
+        "national_id": "3051414007",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 7,
+    "fields": {
+        "user": 8,
+        "first_name": "مرتضی",
+        "last_name": "جعفرپور",
+        "gender": "M",
+        "birthday": "2023-01-23",
+        "national_id": "1234567891",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 8,
+    "fields": {
+        "user": 9,
+        "first_name": "احمد",
+        "last_name": "صابری",
+        "gender": "M",
+        "birthday": "2023-01-23",
+        "national_id": "1234567892",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 9,
+    "fields": {
+        "user": 10,
+        "first_name": "عباس",
+        "last_name": "درب‌هنزی",
+        "gender": "M",
+        "birthday": "2023-01-23",
+        "national_id": "1234567893",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.stockholder",
+    "pk": 10,
+    "fields": {
+        "user": 11,
+        "first_name": "حسین",
+        "last_name": "نگارستانی",
+        "gender": "M",
+        "birthday": "2023-01-23",
+        "national_id": "1234567894",
+        "email": null,
+        "mobile": null
+    }
+},
+{
+    "model": "meeting.student",
+    "pk": 1,
+    "fields": {
+        "stockholder": 4,
+        "stdno": "95149007",
+        "major": "علوم کامپیوتر",
+        "maghta": "کارشناسی"
+    }
+},
+{
+    "model": "meeting.student",
+    "pk": 2,
+    "fields": {
+        "stockholder": 6,
+        "stdno": "99149011",
+        "major": "مهندسی کامپیوتر",
+        "maghta": "کارشناسی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 1,
+    "fields": {
+        "stockholder": 5,
+        "employee_no": "76666",
+        "position": "مسئول دفتر معاونت آموزشی",
+        "type": "کارمند",
+        "dep": "معاونت آموزشی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 2,
+    "fields": {
+        "stockholder": 2,
+        "employee_no": "87222",
+        "position": "معاون آموزشی",
+        "type": "هیات علمی",
+        "dep": "معاونت آموزشی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 3,
+    "fields": {
+        "stockholder": 3,
+        "employee_no": "873922",
+        "position": "مدیر فناوری اطلاعات",
+        "type": "هیات علمی",
+        "dep": "گروه مهندسی کامپیوتر"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 4,
+    "fields": {
+        "stockholder": 7,
+        "employee_no": "1234567",
+        "position": "معاون پژوهشی",
+        "type": "هیات علمی",
+        "dep": "معاونت پژوهشی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 5,
+    "fields": {
+        "stockholder": 8,
+        "employee_no": "1234567892",
+        "position": "رئیس دانشکده کشاورزی",
+        "type": "کارمند",
+        "dep": "دانشکده کشاورزی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 6,
+    "fields": {
+        "stockholder": 9,
+        "employee_no": "1234567893",
+        "position": "رئیس دانشکده فنی مهندسی",
+        "type": "هیات علمی",
+        "dep": "دانشکده فنی مهندسی"
+    }
+},
+{
+    "model": "meeting.employee",
+    "pk": 7,
+    "fields": {
+        "stockholder": 10,
+        "employee_no": "1234567894",
+        "position": "مدیردفتر ریاست",
+        "type": "هیات علمی",
+        "dep": "دانشکده علوم ریاضی"
+    }
+},
+{
+    "model": "meeting.meeting",
+    "pk": 1,
+    "fields": {
+        "meeting_name": "شورای آموزشی دانشگاه",
+        "period": "روزانه",
+        "creator": 2
+    }
+},
+{
+    "model": "meeting.meeting",
+    "pk": 6,
+    "fields": {
+        "meeting_name": "جلسه شورای دانشگاه",
+        "period": "دوهفتگی",
+        "creator": 2
+    }
+},
+{
+    "model": "meeting.meeting",
+    "pk": 9,
+    "fields": {
+        "meeting_name": "جلسه گروه کامپیوتر",
+        "period": "غیرمشخص",
+        "creator": null
+    }
+},
+{
+    "model": "meeting.meeting",
+    "pk": 11,
+    "fields": {
+        "meeting_name": "جلسه کمیته خیرین دانشگاه",
+        "period": "غیرمشخص",
+        "creator": 3
+    }
+},
+{
+    "model": "meeting.meeting",
+    "pk": 15,
+    "fields": {
+        "meeting_name": "جلسه شورای دانشکده مهندسی",
+        "period": "روزانه",
+        "creator": 4
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 4,
+    "fields": {
+        "employee": 2,
+        "meeting": 1,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 5,
+    "fields": {
+        "employee": 3,
+        "meeting": 1,
+        "role": "دبیر"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 6,
+    "fields": {
+        "employee": 3,
+        "meeting": 9,
+        "role": "دبیر"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 7,
+    "fields": {
+        "employee": 1,
+        "meeting": 9,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 8,
+    "fields": {
+        "employee": 2,
+        "meeting": 6,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 13,
+    "fields": {
+        "employee": 2,
+        "meeting": 11,
+        "role": "دبیر"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 14,
+    "fields": {
+        "employee": 3,
+        "meeting": 6,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 15,
+    "fields": {
+        "employee": 1,
+        "meeting": 6,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 16,
+    "fields": {
+        "employee": 1,
+        "meeting": 1,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 17,
+    "fields": {
+        "employee": 1,
+        "meeting": 15,
+        "role": "دبیر"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 18,
+    "fields": {
+        "employee": 2,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 21,
+    "fields": {
+        "employee": 3,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 22,
+    "fields": {
+        "employee": 4,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 23,
+    "fields": {
+        "employee": 5,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 24,
+    "fields": {
+        "employee": 6,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 25,
+    "fields": {
+        "employee": 7,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.membership",
+    "pk": 26,
+    "fields": {
+        "employee": 7,
+        "meeting": 15,
+        "role": "عضو"
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 1,
+    "fields": {
+        "proceeding_no": "آ/۱۲۳۴۵۶",
+        "pdate": "2022-11-17",
+        "ptime": "15:26:12.153",
+        "loc": "سالن شهید هنری",
+        "meeting": 1,
+        "readonly": true,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 2,
+    "fields": {
+        "proceeding_no": "567-m4-9",
+        "pdate": "2022-11-12",
+        "ptime": "15:26:00",
+        "loc": "سالن شهید پرتوی",
+        "meeting": 6,
+        "readonly": false,
+        "upload": "جلسه-شورای-دانشگاه/567-m4-9-1401-08-21.png",
+        "participants": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 3,
+    "fields": {
+        "proceeding_no": "ب/۳۴۲۵/ن",
+        "pdate": "2022-11-17",
+        "ptime": "15:26:12.153",
+        "loc": "سالن شهید پرتوی",
+        "meeting": 1,
+        "readonly": false,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 4,
+    "fields": {
+        "proceeding_no": "42234/sdfs/43",
+        "pdate": "2022-11-12",
+        "ptime": "15:26:12.153",
+        "loc": "سالن ریاست",
+        "meeting": 1,
+        "readonly": true,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 5,
+    "fields": {
+        "proceeding_no": "geeer",
+        "pdate": "2022-10-30",
+        "ptime": "15:26:12.153",
+        "loc": "sdfds",
+        "meeting": 1,
+        "readonly": true,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 9,
+    "fields": {
+        "proceeding_no": "خ/۱۲۴۵/۳۴",
+        "pdate": "2022-11-20",
+        "ptime": "15:26:12.153",
+        "loc": "سالن شهید هنری",
+        "meeting": 11,
+        "readonly": false,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 10,
+    "fields": {
+        "proceeding_no": "گ/۱۲۳/ثث",
+        "pdate": "2022-12-16",
+        "ptime": "15:26:12.153",
+        "loc": "دفتر گروه",
+        "meeting": 9,
+        "readonly": true,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 11,
+    "fields": {
+        "proceeding_no": "2-1400",
+        "pdate": "2021-04-24",
+        "ptime": "15:26:12.153",
+        "loc": "دفتر رئیس",
+        "meeting": 1,
+        "readonly": false,
+        "upload": "2023-01-13 15:26:57.784036+00:00",
+        "participants": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 12,
+    "fields": {
+        "proceeding_no": "3455",
+        "pdate": "2023-01-04",
+        "ptime": "03:03:00",
+        "loc": "دفتر دانشکده",
+        "meeting": 9,
+        "readonly": false,
+        "upload": "جلسه-گروه-کامپیوتر/3455-1401-10-14.png",
+        "participants": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 13,
+    "fields": {
+        "proceeding_no": "6755",
+        "pdate": "2022-11-28",
+        "ptime": "17:10:00",
+        "loc": "سالن شهید پرتوی",
+        "meeting": 9,
+        "readonly": false,
+        "upload": "",
+        "participants": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "meeting.proceeding",
+    "pk": 14,
+    "fields": {
+        "proceeding_no": "3478",
+        "pdate": "2022-11-28",
+        "ptime": "03:08:00",
+        "loc": "دفتر دانشکده",
+        "meeting": 15,
+        "readonly": false,
+        "upload": "",
+        "participants": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 1,
+    "fields": {
+        "item_no": "۴",
+        "act_text": "مقرر شد زودتر کارهای انجام شود.",
+        "resolution_type": "0",
+        "result": true,
+        "proceeding": 10,
+        "stockholder_type": "کارکنان",
+        "stockholder": 2
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 8,
+    "fields": {
+        "item_no": "۱",
+        "act_text": "با درخواست درخواست حذف ترم خانم حبیبه مسلمی به کد ملی 299348733 مخالفت شد.",
+        "resolution_type": "1",
+        "result": false,
+        "proceeding": 2,
+        "stockholder_type": "کارکنان",
+        "stockholder": 5
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 10,
+    "fields": {
+        "item_no": "44",
+        "act_text": "با درخواست درخواست حذف درس آقای علی بادپروا به شماره دانشجویی 95149007 مخالفت شد.",
+        "resolution_type": "2",
+        "result": false,
+        "proceeding": 2,
+        "stockholder_type": "دانشجو",
+        "stockholder": 4
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 11,
+    "fields": {
+        "item_no": "45",
+        "act_text": "با درخواست درخواست مهمانی آقای عرفان رجب‌زاده به شماره دانشجویی 99149011 مخالفت شد.",
+        "resolution_type": "3",
+        "result": false,
+        "proceeding": 2,
+        "stockholder_type": "دانشجو",
+        "stockholder": 6
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 12,
+    "fields": {
+        "item_no": "50",
+        "act_text": "با درخواست درخواست حذف ترم آقای محمد ثابت به کد ملی 3051213277 مخالفت شد.",
+        "resolution_type": "1",
+        "result": false,
+        "proceeding": 2,
+        "stockholder_type": "کارکنان",
+        "stockholder": 2
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 13,
+    "fields": {
+        "item_no": "۵۶",
+        "act_text": "با درخواست درخواست حذف ترم آقای عرفان رجب‌زاده به شماره دانشجویی 99149011 مخالفت شد.",
+        "resolution_type": "1",
+        "result": false,
+        "proceeding": 1,
+        "stockholder_type": "دانشجو",
+        "stockholder": 6
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 14,
+    "fields": {
+        "item_no": "۱",
+        "act_text": "آقای دکتر رنجبر راجع به مسائل مختلف دانشگاه توضیحاتی ارایه دادند.",
+        "resolution_type": "0",
+        "result": true,
+        "proceeding": 14,
+        "stockholder_type": "کارکنان",
+        "stockholder": 1
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 16,
+    "fields": {
+        "item_no": "۲",
+        "act_text": "ادامه بررسی برنامه پنج ساله توسعه آموزشی در زمینه حذف، ادغام، ایجاد رشته‌های آموزشی که به تأیید شواری آموزشی و تحصیلات تکمیلی دانشگاه رسیده بود، مطرح و بر اساس پیوست 1 مورد بررسی و موافقت قرار گرفت",
+        "resolution_type": "0",
+        "result": true,
+        "proceeding": 14,
+        "stockholder_type": "کارکنان",
+        "stockholder": 1
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 17,
+    "fields": {
+        "item_no": "۳",
+        "act_text": "راه‌اندازی رشته مهندسی کامپیوتر گرایش معماری در مقطع کارشناسی‌ارشد مطرح و با توجّه به دارا بودن شرایط مورد نظر مورد موافقت قرار گرفت.",
+        "resolution_type": "1",
+        "result": true,
+        "proceeding": 14,
+        "stockholder_type": "کارکنان",
+        "stockholder": 1
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 18,
+    "fields": {
+        "item_no": "۴",
+        "act_text": "دستورالعمل برگزاری دوره‌های کرسی‌های نظریه‌پردازی (ترویجی) بررسی و مورد تأیید قرار گرفت. (پیوست2).",
+        "resolution_type": "0",
+        "result": true,
+        "proceeding": 14,
+        "stockholder_type": "کارکنان",
+        "stockholder": 1
+    }
+},
+{
+    "model": "meeting.resolution",
+    "pk": 22,
+    "fields": {
+        "item_no": "۵",
+        "act_text": "در نهایت همه با ذکر حمد و صلواتی جلسه را پایان دادند.",
+        "resolution_type": "0",
+        "result": true,
+        "proceeding": 14,
+        "stockholder_type": "کارکنان",
+        "stockholder": 1
+    }
+},
+{
+    "model": "meeting.resolutiontype",
+    "pk": 1,
+    "fields": {
+        "resolution_type": "درخواست حذف ترم"
+    }
+},
+{
+    "model": "meeting.resolutiontype",
+    "pk": 2,
+    "fields": {
+        "resolution_type": "درخواست حذف درس"
+    }
+},
+{
+    "model": "meeting.resolutiontype",
+    "pk": 3,
+    "fields": {
+        "resolution_type": "درخواست مهمانی"
+    }
+},
+{
+    "model": "meeting.resolutiontype",
+    "pk": 4,
+    "fields": {
+        "resolution_type": "درخواست انتقالی"
+    }
+}
+]
