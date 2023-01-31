@@ -9,7 +9,7 @@ services:
     ports:
       - "8001:8000"
     networks:
-      - web_nw
+      - my_network
     depends_on:
       - db
   db:
@@ -17,6 +17,8 @@ services:
     container_name: postgres
     volumes:
       - postgres:/var/lib/postgresql/data
+      - media_root:/app/meeting/assets
+      - meeting_static:/app/static
     restart: always
     environment:
       - DATABASE_NAME=meeting
@@ -24,14 +26,14 @@ services:
       - POSTGRES_PASSWORD=Msj.116159
       - HOST=postgres
       - PORT=5432
-      - DEBUG=False
-      - SECRET_KEY=django-insecure-)5cl@k5dt7*e8)%1i(6m&8a-g5et7!#oer=gu1qh6^0t($qjy#
     networks:
-      - web_nw
+      - my_network
  
 networks:
-  web_nw:
+  my_network:
     driver: bridge
 
 volumes:
   postgres:
+  media_root:
+  meeting_static:
