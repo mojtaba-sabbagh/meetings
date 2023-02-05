@@ -64,7 +64,7 @@ export default {
                 this.$emit('onLogin');
             })
             .catch(error => {
-                this.message = 'نام کاربری یا پسورد اشتباه است'; 
+                this.message = error; //'نام کاربری یا پسورد اشتباه است'; 
             });
       }
     }
