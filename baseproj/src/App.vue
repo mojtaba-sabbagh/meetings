@@ -78,7 +78,6 @@
         withCredentials: true,
         })
         .then(response => {
-            console.log(response);
             this.$cookies.remove('XSRF-TOKEN');
             this.$cookies.remove('sessionid');
         })

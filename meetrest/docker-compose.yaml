@@ -28,6 +28,20 @@ services:
       - PORT=5432
     networks:
       - my_network
+  nginx:
+    image: mynginx
+    container_name: mynginxCon
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx_html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+      - "4000:4000"
+    networks:
+      - my_network
+    depends_on:
+      - meeting
  
 networks:
   my_network:
